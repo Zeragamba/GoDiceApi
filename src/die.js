@@ -22,9 +22,18 @@ export default class Die extends EventEmitter {
     this.instance = instance;
 
     this.on("stable", (value) => this.onValue(value));
-    this.on("moveStable", ([value, xyzAccRaw]) => this.onValue(value));
-    this.on("fakeStable", ([value, xyzAccRaw]) => this.onValue(value));
-    this.on("tiltStable", ([value, xyzAccRaw]) => this.onValue(value));
+    this.on("moveStable", ([value, xyzAccRaw]) => {
+      this.onValue(value);
+      this.onAccRaw(xyzAccRaw);
+    });
+    this.on("fakeStable", ([value, xyzAccRaw]) => {
+      this.onValue(value);
+      this.onAccRaw(xyzAccRaw);
+    });
+    this.on("tiltStable", ([value, xyzAccRaw]) => {
+      this.onValue(value);
+      this.onAccRaw(xyzAccRaw);
+    });
   }
 
   get id() {

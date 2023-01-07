@@ -49,7 +49,7 @@ GoDice.prototype.onDiceColor = (dieId, color) => {
 };
 
 GoDice.prototype.onStable = (dieId, value, xyzAccRaw) => {
-  diceSet.dice[dieId].emit("stable", [value, xyzAccRaw]);
+  diceSet.dice[dieId].emit("stable", value);
 };
 
 GoDice.prototype.onFakeStable = (dieId, value, xyzAccRaw) => {
