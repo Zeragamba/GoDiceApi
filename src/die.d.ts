@@ -14,6 +14,7 @@ type DieInstance = {
   getBatteryLevel(): void;
   getDiceColor(): void;
   setLed(led1: LedColor, led2: LedColor): void;
+  setDieType(dieType: DieTypes): void;
 };
 
 type DieTypes = "D6" | "D20" | "D10" | "D10X" | "D4" | "D8" | "D12";
@@ -24,6 +25,10 @@ export default class Die extends EventEmitter {
   readonly id;
 
   new(id: string, instance: DieInstance);
+
+  instance: {
+    dieType: number;
+  };
 
   on(event: "rollStart", handler: () => void): void;
   on(event: "stable", handler: (value: number) => void): void;
