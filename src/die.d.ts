@@ -33,8 +33,24 @@ export default class Die extends EventEmitter {
   on(event: "rollStart", handler: () => void): void;
   on(event: "stable", handler: (value: number) => void): void;
   on(event: "value", handler: (value: number) => void): void;
-  on(event: "fakeStable", handler: (value: number) => void): void;
-  on(event: "moveStable", handler: (value: number) => void): void;
+  on(
+    event: "tiltStable",
+    handler: (
+      payload: [value: number, xyzAccRaw: [X: number, Y: number, Z: number]]
+    ) => void
+  ): void;
+  on(
+    event: "fakeStable",
+    handler: (
+      payload: [value: number, xyzAccRaw: [X: number, Y: number, Z: number]]
+    ) => void
+  ): void;
+  on(
+    event: "moveStable",
+    handler: (
+      payload: [value: number, xyzAccRaw: [X: number, Y: number, Z: number]]
+    ) => void
+  ): void;
   on(event: "batteryLevel", handler: (level: number) => void): void;
   on(event: "color", handler: (colourId: number) => void): void;
   on(event: "disconnected", handler: () => void): void;
@@ -45,6 +61,13 @@ export default class Die extends EventEmitter {
 
   setLed(color: LedColor): void;
   setLed(color1: LedColor, color2: LedColor): void;
+
+  pulseLed(
+    pulseCount: number,
+    onTime: number,
+    offTime: number,
+    RGB: [R: number, G: number, B: number]
+  ): void;
 
   setDieType(dieType: DieTypes): void;
 }

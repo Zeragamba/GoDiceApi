@@ -22,9 +22,9 @@ export default class Die extends EventEmitter {
     this.instance = instance;
 
     this.on("stable", (value) => this.onValue(value));
-    this.on("moveStable", (value) => this.onValue(value));
-    this.on("fakeStable", (value) => this.onValue(value));
-    this.on("tiltStable", (value) => this.onValue(value));
+    this.on("moveStable", ([value, xyzAccRaw]) => this.onValue(value));
+    this.on("fakeStable", ([value, xyzAccRaw]) => this.onValue(value));
+    this.on("tiltStable", ([value, xyzAccRaw]) => this.onValue(value));
   }
 
   get id() {
@@ -33,6 +33,10 @@ export default class Die extends EventEmitter {
 
   onValue(value) {
     this.emit("value", value);
+  }
+
+  onAccRaw(xyzAccRaw) {
+    this.emit("accRaw", xyzAccRaw);
   }
 
   getBatteryLevel() {
@@ -70,6 +74,10 @@ export default class Die extends EventEmitter {
     }
 
     this.instance.setLed(led1, led2);
+  }
+
+  pulseLed(pulseCount, onTime, offTime, RGB) {
+    this.instance.pulseLed(pulseCount, onTime, offTime, RGB);
   }
 
   setDieType(dieType) {

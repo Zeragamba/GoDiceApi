@@ -48,18 +48,18 @@ GoDice.prototype.onDiceColor = (dieId, color) => {
   diceSet.dice[dieId].emit("color", color);
 };
 
-GoDice.prototype.onStable = (dieId, value) => {
-  diceSet.dice[dieId].emit("stable", value);
+GoDice.prototype.onStable = (dieId, value, xyzAccRaw) => {
+  diceSet.dice[dieId].emit("stable", [value, xyzAccRaw]);
 };
 
-GoDice.prototype.onFakeStable = (dieId, value) => {
-  diceSet.dice[dieId].emit("fakeStable", value);
+GoDice.prototype.onFakeStable = (dieId, value, xyzAccRaw) => {
+  diceSet.dice[dieId].emit("fakeStable", [value, xyzAccRaw]);
 };
 
-GoDice.prototype.onMoveStable = (dieId, value) => {
-  diceSet.dice[dieId].emit("moveStable", value);
+GoDice.prototype.onMoveStable = (dieId, value, xyzAccRaw) => {
+  diceSet.dice[dieId].emit("moveStable", [value, xyzAccRaw]);
 };
 
 GoDice.prototype.onTiltStable = (diceId, xyzAccRaw, value) => {
-  diceSet.dice[diceId].emit("tiltStable", value);
+  diceSet.dice[diceId].emit("tiltStable", [value, xyzAccRaw]);
 };
