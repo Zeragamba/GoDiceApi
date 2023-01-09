@@ -1,6 +1,6 @@
 # GoDice JavaScript API Wrapper
 
-Note: Repo Archived and merged into a monorepo found here: https://github.com/Zeragamba/go-dice-js
+# Note: Repo Archived and merged into a monorepo found here: https://github.com/Zeragamba/go-dice-js
 
 This package is a work in progress. Trying to wrap the API to support TypeScript
 and a nicer API interface.
